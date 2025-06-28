@@ -266,29 +266,26 @@
                     body: formData,
                 });
 
-                if (response.ok) {
-                    const blob = await response.blob();
-                    const contentDisposition = response.headers.get('Content-Disposition');
-                    let filename = 'split_audio.tar.gz'; 
-
-                    if (contentDisposition) {
-                        const filenameMatch = contentDisposition.match(/filename="(.+)"/);
-                        if (filenameMatch && filenameMatch[1]) {
-                            filename = filenameMatch[1];
-                        }
-                    }
-
-                    const url = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = filename;
-                    document.body.appendChild(a);
-                    a.click();
-                    a.remove();
-                    window.URL.revokeObjectURL(url);
-
-                    updateMessage('Audio split and downloaded successfully!', false);
-                } else {
+             if (response.ok) {
+                const blob = await response.blob();
+            
+                // Use uploaded file's name as base for downloaded filename
+                let originalName = selectedFile.name.replace(/\.[^/.]+$/, ''); // Remove extension
+                let safeName = originalName.replace(/\s+/g, '_'); // Replace spaces with underscores
+                let filename = `${safeName}_split.tar.gz`;
+            
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
+            
+                updateMessage('Audio split and downloaded successfully!', false);
+            }
+             else {
                     const errorData = await response.json();
                     updateMessage(`Error: ${errorData.error || 'Something went wrong.'}`, true);
                 }
