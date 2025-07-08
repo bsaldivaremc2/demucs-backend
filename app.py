@@ -17,7 +17,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ["http://localhost:8000", "https://your-frontend-domain.com"]}}) 
 
 # Replace with your actual Google Client ID (from Google Cloud Console)
-GOOGLE_CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID" 
+GOOGLE_CLIENT_ID = "136078894256-6e15kiau376eja7htp018igfh72cbpue.apps.googleusercontent.com" 
 
 MAX_FILE_SIZE = 20 * 1024 * 1024  # 20 MB
 
