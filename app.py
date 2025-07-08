@@ -15,7 +15,7 @@ app = Flask(__name__)
 # For local development, you might use "http://localhost:8000" or similar.
 # Ensure no trailing slash for exact match.
 #CORS(app, resources={r"/*": {"origins": ["http://localhost:8000", "https://your-frontend-domain.com"]}}) 
-CORS(app, resources={r"/*": {"origins": ["http://localhost:8000", "https://bsaldivaremc2.github.io/demucs-backend"]}})
+CORS(app, resources={r"/*": {"origins": ["http://localhost:8000", "https://bsaldivaremc2.github.io"]}})
 
 # Replace with your actual Google Client ID (from Google Cloud Console)
 GOOGLE_CLIENT_ID = "136078894256-6e15kiau376eja7htp018igfh72cbpue.apps.googleusercontent.com" 
