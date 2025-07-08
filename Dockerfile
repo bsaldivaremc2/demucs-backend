@@ -26,6 +26,7 @@ RUN python3 -m pip install -U git+https://github.com/facebookresearch/demucs#egg
     pip install numpy==1.26.4 && \
     pip install Flask flask_cors
 
+RUn pip install google-auth google-auth-oauthlib requests
 # Expose the port the app runs on
 EXPOSE 5000
 
